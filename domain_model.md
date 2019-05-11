@@ -1,5 +1,5 @@
 | Objects | Messages |
-|--------------------|
+|--------|-----------|
 | Person | |
 | Bike | Use |
 | Bike | Is_Working |
