@@ -1,6 +1,6 @@
 | Objects | Messages |
 |--------|-----------|
 | Person | |
-| Bike | Use |
-| Bike | Is_Working |
-| Docking_Station | Release_Bike |
+| Bike | use |
+| Bike | is_working |
+| Docking_Station | release_bike |
