@@ -1,18 +1,28 @@
 import unittest
 from app import DockingStation
+from app import Bike
 
 class TestDockingStation(unittest.TestCase):
 
     def setUp(self):
-        pass
+        self.docking_station = DockingStation()
 
     def test_docking_station_object(self):
-        docking_station = DockingStation()
-        self.assertIsInstance(docking_station, DockingStation)
+        self.assertIsInstance(self.docking_station, DockingStation)
 
-    def test_release_bike_returns_true(self):
-        docking_station = DockingStation()
-        self.assertEqual(docking_station.release_bike(), True)
+
+class TestBike(unittest.TestCase):
+
+    def setUp(self):
+        self.docking_station = DockingStation()
+        self.bike = self.docking_station.release_bike()
+
+    def test_release_bike_creates_bike_object(self):
+        self.assertIsInstance(self.bike, Bike)
+
+    def test_bike_is_working(self):
+        self.assertEquals(self.bike.is_working(), True)
+
 
 if __name__ == '__main__':
     unittest.main()
