@@ -3,4 +3,6 @@
 | Person | |
 | Bike | use |
 | Bike | is_working |
-| Docking_Station | release_bike |
+| DockingStation | release_bike |
+| DockingStation | dock_bike |
+| DockingStation | bike_docked |

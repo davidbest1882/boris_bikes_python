@@ -1,6 +1,5 @@
 import unittest
-from app import DockingStation
-from app import Bike
+from app import DockingStation, Bike
 
 class TestDockingStation(unittest.TestCase):
 
@@ -9,6 +8,12 @@ class TestDockingStation(unittest.TestCase):
 
     def test_docking_station_object(self):
         self.assertIsInstance(self.docking_station, DockingStation)
+
+    def test_dock_bike(self):
+        bike = self.docking_station.release_bike()
+        self.assertEquals(self.docking_station.docked, None)
+        self.docking_station.dock_bike(bike)
+        self.assertEquals(self.docking_station.docked, bike)
 
 
 class TestBike(unittest.TestCase):
