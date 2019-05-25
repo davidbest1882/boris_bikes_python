@@ -12,7 +12,8 @@ class TestDockingStation(unittest.TestCase):
     def test_for_docked_bike(self):
         bike = Bike()
         self.docking_station.dock_bike(bike)
-        self.assertTrue(self.docking_station.docked)
+        self.assertEquals(self.docking_station.docked, bike)
+
 
     def test_raises_exception_if_no_bike(self):
         with self.assertRaises(Exception):
