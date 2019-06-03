@@ -6,26 +6,23 @@ class DockingStation:
     def release_bike(self):
         try:
              return self.docked
-        except AttributeError as e:
-            raise e
+        except AttributeError:
+            raise Exception("No bike available")
         finally:
             if hasattr(self, 'docked'):
                 delattr(self, 'docked')
 
-        # if self.docked == False:
-        #     raise Exception("No bike available")
-        # else:
-        #     return self.docked
-        #     self.docked = False
+    def dock(self, bike):
+        if hasattr(self, 'docked'):
+            raise Exception("Bike already docked at this station!")
+        else:
+            self.docked = bike
 
-    def dock_bike(self, bike):
-        self.docked = bike
-
-    def see_bike(self):
+    def show_bike(self):
         try:
             return self.docked
-        except AttributeError as e:
-            raise e
+        except AttributeError:
+            raise Exception("No bike available")
 
 class Bike:
 
