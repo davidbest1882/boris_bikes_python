@@ -1,7 +1,8 @@
 class DockingStation:
 
     def __init__(self):
-        pass
+        self.bike_store = []
+        self.maximum_bikes = 20
 
     def release_bike(self):
         try:
@@ -13,14 +14,14 @@ class DockingStation:
                 delattr(self, 'docked')
 
     def dock(self, bike):
-        if hasattr(self, 'docked'):
-            raise Exception("Bike already docked at this station!")
+        if len(self.bike_store) <= self.maximum_bikes:
+            self.bike_store.append(bike)
         else:
-            self.docked = bike
+            raise Exception("This station is full!")
 
-    def show_bike(self):
+    def show_bikes(self):
         try:
-            return self.docked
+            return self.bike_store
         except AttributeError:
             raise Exception("No bike available")
 

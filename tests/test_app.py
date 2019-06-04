@@ -15,7 +15,7 @@ class TestDockingStation(unittest.TestCase):
 
     def test_for_docked_bike(self):
         self.docking_station.dock(self.bike1)
-        self.assertEqual(self.docking_station.docked, self.bike1)
+        self.assertEqual(self.docking_station.bike_store, [self.bike1])
         self.docking_station.release_bike()
         with self.assertRaises(Exception):
             self.docking_station.release_bike()
@@ -24,10 +24,12 @@ class TestDockingStation(unittest.TestCase):
         with self.assertRaises(Exception):
             self.docking_station.show_bike()
 
-    def test_bike_already_docked(self):
-        self.docking_station.dock(self.bike1)
-        with self.assertRaises(Exception):
-            self.docking_station.dock(self.bike2)
+    def test_store_20_bikes(self):
+        for i in range(20):
+            self.docking_station.dock(Bike())
+        self.assertEqual(len(self.docking_station.bike_store), 20)
+        # with self.assertRaises(Exception):
+        #     self.docking_station.dock(Bike())
 
 
 
