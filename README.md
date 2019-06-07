@@ -7,6 +7,7 @@ This is my version of Boris Bikes written in Python 3. A program that will emula
 
 **Instansiate objects:**
 >docking_station = DockingStation()
+
 >bike = Bike()
 
 **Methods available:**
