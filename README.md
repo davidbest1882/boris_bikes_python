@@ -10,6 +10,7 @@ This is my version of Boris Bikes written in Python 3. A program that will emula
 >bike = Bike()
 
 **Methods available:**
+
 DockingStation
 - release_bike
 - dock
