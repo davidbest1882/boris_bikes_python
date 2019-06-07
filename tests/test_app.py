@@ -20,23 +20,30 @@ class TestDockingStation(unittest.TestCase):
         with self.assertRaises(Exception):
             self.docking_station.release_bike()
 
-    def test_raises_exception_if_no_bike(self):
-        with self.assertRaises(Exception):
-            self.docking_station.show_bike()
+    def test_show_bikes_shows_a_bike(self):
+        self.docking_station.dock(self.bike1)
+        self.assertEqual(self.docking_station.show_bikes(), [self.bike1])
 
-    def test_store_20_bikes(self):
+    def test_show_bikes_raises_exception_if_no_bike(self):
+        with self.assertRaises(Exception):
+            self.docking_station.show_bikes()
+
+    def test_docking_station_releases_bike(self):
+        self.docking_station.dock(self.bike1)
+        self.assertEqual(self.docking_station.release_bike(), self.bike1)
+
+    def test_store_maximum_20_bikes(self):
         for i in range(20):
             self.docking_station.dock(Bike())
         self.assertEqual(len(self.docking_station.bike_store), 20)
-        # with self.assertRaises(Exception):
-        #     self.docking_station.dock(Bike())
+        with self.assertRaises(Exception):
+            self.docking_station.dock(Bike())
 
 
 
 class TestBike(unittest.TestCase):
 
     def setUp(self):
-        self.docking_station = DockingStation()
         self.bike = Bike()
 
     def test_bike_object(self):
