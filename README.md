@@ -5,7 +5,7 @@ This is my version of Boris Bikes written in Python 3. A program that will emula
 **Instructions to start app:**
 >python app.py
 
-**Instansiate objects:**
+**Instantiate objects:**
 >docking_station = DockingStation()
 
 >bike = Bike()

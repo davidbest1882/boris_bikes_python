@@ -1,9 +1,13 @@
+#import constant
+
 class DockingStation:
 
-    def __init__(self):
+    DEFAULT_CAPACITY = 20
+
+    def __init__(self, capacity=DEFAULT_CAPACITY):
         self.bike_store = []
-        self.capacity = 20
         self.minumum_bikes = 1
+        self.__capacity = capacity
 
     def release_bike(self):
         try:
@@ -26,7 +30,7 @@ class DockingStation:
             raise Exception('No bikes available')
 
     def __is_full(self):
-        if len(self.bike_store) >= self.capacity:
+        if len(self.bike_store) >= self.__capacity:
             raise Exception("This station is full!")
 
 

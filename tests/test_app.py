@@ -39,7 +39,13 @@ class TestDockingStation(unittest.TestCase):
         with self.assertRaises(Exception):
             self.docking_station.dock(Bike())
 
-
+    def test_store_maximum_10_bikes(self):
+        self.docking_station2 = DockingStation(10)
+        for i in range(10):
+            self.docking_station2.dock(Bike())
+        self.assertEqual(len(self.docking_station2.bike_store), 10)
+        with self.assertRaises(Exception):
+            self.docking_station2.dock(Bike())
 
 class TestBike(unittest.TestCase):
 
