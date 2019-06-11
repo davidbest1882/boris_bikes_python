@@ -36,5 +36,8 @@ class DockingStation:
 
 class Bike:
 
-    def is_working(self):
-        return True
+    def __init__(self):
+        self.working = True
+
+    def report_broken(self):
+        self.working = False

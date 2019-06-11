@@ -32,20 +32,22 @@ class TestDockingStation(unittest.TestCase):
         self.docking_station.dock(self.bike1)
         self.assertEqual(self.docking_station.release_bike(), self.bike1)
 
-    def test_store_maximum_20_bikes(self):
+    def test_default_bike_capacity(self):
         for i in range(20):
             self.docking_station.dock(Bike())
         self.assertEqual(len(self.docking_station.bike_store), 20)
         with self.assertRaises(Exception):
             self.docking_station.dock(Bike())
 
-    def test_store_maximum_10_bikes(self):
-        self.docking_station2 = DockingStation(10)
-        for i in range(10):
-            self.docking_station2.dock(Bike())
-        self.assertEqual(len(self.docking_station2.bike_store), 10)
-        with self.assertRaises(Exception):
-            self.docking_station2.dock(Bike())
+    def test_lower_and_higher_bike_capacity(self):
+        for default in [10, 30]:
+            self.docking_station = DockingStation(default)
+            for bike in range(default):
+                self.docking_station.dock(Bike())
+            self.assertEqual(len(self.docking_station.bike_store), default)
+            with self.assertRaises(Exception):
+                self.docking_station.dock(Bike())
+
 
 class TestBike(unittest.TestCase):
 
@@ -56,7 +58,11 @@ class TestBike(unittest.TestCase):
         self.assertIsInstance(self.bike, Bike)
 
     def test_bike_is_working(self):
-        self.assertEqual(self.bike.is_working(), True)
+        self.assertEqual(self.bike.working, True)
+
+    def test_report_broken(self):
+        self.bike.report_broken()
+        self.assertEqual(self.bike.working, False)
 
 
 if __name__ == '__main__':
