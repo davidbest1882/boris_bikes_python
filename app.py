@@ -11,9 +11,12 @@ class DockingStation:
 
     def release_bike(self):
         try:
-            return self.bike_store.pop()
+            for bike in self.bike_store:
+                if bike.working:
+                    bike_for_release = self.bike_store.pop(self.bike_store.index(bike))
+            return bike_for_release
         except Exception:
-            raise Exception("No bike available")
+            raise Exception("No working bike available")
 
     def dock(self, bike):
         try:

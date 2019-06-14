@@ -48,6 +48,13 @@ class TestDockingStation(unittest.TestCase):
             with self.assertRaises(Exception):
                 self.docking_station.dock(Bike())
 
+    def test_release_bike_thats_working(self):
+        self.bike1.report_broken()
+        self.docking_station.dock(self.bike1)
+        self.docking_station.dock(self.bike2)
+        self.bike3 = self.docking_station.release_bike()
+        self.assertEqual(self.bike3.working, True)
+
 
 class TestBike(unittest.TestCase):
 
