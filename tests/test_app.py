@@ -1,3 +1,5 @@
+from unittest.mock import MagicMock as Mock
+
 import unittest
 import sys
 sys.path.append('..')
@@ -7,8 +9,9 @@ class TestDockingStation(unittest.TestCase):
 
     def setUp(self):
         self.docking_station = DockingStation()
-        self.bike1 = Bike()
-        self.bike2 = Bike()
+        self.bike1 = Mock()
+        self.bike1.configure_mock(working=True)
+        self.bike2 = Mock()
 
     def test_docking_station_object(self):
         self.assertIsInstance(self.docking_station, DockingStation)
